@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TeamManager</string>
+    <string name="struct_name">Nom de la structure</string>
+    <string name="welcome">Bienvenue sur LolTeamManager !</string>
+    <string name="default_struct_name">DefaultStruct</string>
+    <string name="validate_image">Validate Image</string>
+    <string name="validate">Valider</string>
+</resources>

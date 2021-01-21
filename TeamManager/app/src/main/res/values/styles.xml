@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/superGrey</item>
+        <item name="colorPrimaryDark">@color/superBrown</item>
+        <item name="colorAccent">@color/superWhite</item>
+        <item name="android:fontFamily">@font/friz_quadrata_bold</item>
+    </style>
+
+</resources>
