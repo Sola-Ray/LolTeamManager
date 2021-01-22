@@ -23,19 +23,55 @@
             android:textColor="@color/superBrown"
             tools:text="Team's name" />
 
-        <TextView
-            android:id="@+id/view_user_top"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_card_view_user_team"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/superGrey"
-            tools:text="Toplaner" />
-        <TextView
-            android:id="@+id/view_user_jgl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/superGrey"
-            tools:text="Jglaner" />
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_margin">
+
+            <TextView
+                android:id="@+id/view_user_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/superGrey"
+                tools:text="Toplaner"
+                android:layout_margin="@dimen/view_user_margin"/>
+<!--                android:drawableLeft=""/>-->
+            <TextView
+                android:id="@+id/view_user_jgl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/superGrey"
+                tools:text="Jungler"
+                android:layout_margin="@dimen/view_user_margin"/>
+            <TextView
+                android:id="@+id/view_user_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/superGrey"
+                tools:text="Midlaner"
+                android:layout_margin="@dimen/view_user_margin"/>
+            <TextView
+                android:id="@+id/view_user_adc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/superGrey"
+                tools:text="Adcarry"
+                android:layout_margin="@dimen/view_user_margin"/>
+            <TextView
+                android:id="@+id/view_user_bot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/superGrey"
+                tools:text="Support"
+                android:layout_margin="@dimen/view_user_margin"/>
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
