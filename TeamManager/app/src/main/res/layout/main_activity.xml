@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/background_diana">
+    android:background="@drawable/background_diana"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_home"
@@ -28,5 +29,5 @@
         android:background="@drawable/selector_change_background_btn"
         android:text="@string/teams"
         android:textSize="32sp"/>
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
