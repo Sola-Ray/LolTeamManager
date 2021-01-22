@@ -8,4 +8,6 @@
     <string name="home">Accueil</string>
     <string name="teams">Équipes</string>
     <string name="txt_empty_team">Vous n\'avez pas encore créé de Team !</string>
+    <string name="empty_team_imageview">Empty team imageView</string>
+    <string name="fab_add_team">Fab add Team</string>
 </resources>
