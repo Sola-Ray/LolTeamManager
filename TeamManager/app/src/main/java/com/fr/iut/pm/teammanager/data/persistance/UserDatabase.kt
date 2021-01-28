@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.fr.iut.pm.teammanager.UserApplication
 import com.fr.iut.pm.teammanager.model.User
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 @Database(entities = [User::class], version = 1)
 abstract class UserDatabase : RoomDatabase() {
