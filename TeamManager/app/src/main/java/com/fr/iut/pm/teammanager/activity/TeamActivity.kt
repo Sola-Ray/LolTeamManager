@@ -1,10 +1,14 @@
-package com.fr.iut.pm.teammanager
+package com.fr.iut.pm.teammanager.activity
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.fr.iut.pm.teammanager.R
 import com.fr.iut.pm.teammanager.api.ApiRequest
-import com.fr.iut.pm.teammanager.fragment.NetworkFragment
+import com.fr.iut.pm.teammanager.fragment.TeamFragment
+import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
 import com.fr.iut.pm.teammanager.model.User
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,13 +16,28 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class MainActivity : AppCompatActivity() {
+class TeamActivity : SimpleFragmentActivity() {
+
+    companion object {
+        private const val MY_TEAM_ID = "my_team_id"
+
+        fun getIntent(context: Context, teamId: Long) =
+            Intent(context, TeamActivity::class.java).apply {
+                putExtra(MY_TEAM_ID, teamId)
+            }
+    }
+
+    private var teamId = NEW_TEAM_ID
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        teamId = intent.getLongExtra(MY_TEAM_ID, NEW_TEAM_ID)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         testApi()
     }
+
+    override fun createFragment() = TeamFragment.newInstance(teamId)
+    //override
 
     private val url = "https://euw1.api.riotgames.com/"
 

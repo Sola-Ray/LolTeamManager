@@ -1,11 +1,12 @@
 package com.fr.iut.pm.teammanager
 
 import android.app.Application
+import com.fr.iut.pm.teammanager.data.persistance.TeamDatabase
 import com.fr.iut.pm.teammanager.data.persistance.UserDatabase
 
-class UserApplication : Application() {
+class TeamApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        UserDatabase.initialize(this)
+        TeamDatabase.initialize(this)
     }
 }

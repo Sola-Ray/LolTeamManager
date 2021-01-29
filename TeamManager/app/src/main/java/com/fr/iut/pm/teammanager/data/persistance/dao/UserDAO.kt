@@ -1,4 +1,4 @@
-package com.fr.iut.pm.teammanager.data.persistance
+package com.fr.iut.pm.teammanager.data.persistance.dao
 
 import androidx.room.*
 import com.fr.iut.pm.teammanager.model.User
@@ -12,7 +12,7 @@ interface UserDAO {
     fun findById(id: Long): User
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(dog: User)
+    fun insert(user: User)
 
     @Insert
     fun insertAll(vararg users: User)

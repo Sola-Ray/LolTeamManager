@@ -5,27 +5,28 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.fr.iut.pm.teammanager.TeamApplication
-import com.fr.iut.pm.teammanager.data.persistance.dao.UserDAO
+import com.fr.iut.pm.teammanager.data.persistance.dao.TeamDAO
+import com.fr.iut.pm.teammanager.model.Team
 import com.fr.iut.pm.teammanager.model.User
 
 @Database(entities = [User::class], version = 1)
-abstract class UserDatabase : RoomDatabase() {
+abstract class TeamDatabase : RoomDatabase() {
 
-    abstract fun userDAO(): UserDAO
+    abstract fun teamDAO(): TeamDAO
 
     companion object {
         private lateinit var application: Application
         @Volatile
-        private var instance: UserDatabase? = null
+        private var instance: TeamDatabase? = null
 
-        fun getInstance(): UserDatabase {
+        fun getInstance(): TeamDatabase {
             if (::application.isInitialized) {
                 if (instance == null)
                     synchronized(this) {
                         if (instance == null)
                             instance = Room.inMemoryDatabaseBuilder(
                                 application.applicationContext,
-                                UserDatabase::class.java)
+                                TeamDatabase::class.java)
                                 .allowMainThreadQueries()
                                 .build()
                         dirtyPopulateDB()
@@ -45,8 +46,8 @@ abstract class UserDatabase : RoomDatabase() {
         }
 
         private fun dirtyPopulateDB() {
-            getInstance().userDAO().apply {
-                insert(User("Test", 1234))
+            getInstance().teamDAO().apply {
+                insert(Team(45656, "Abusing Mid Gap"))
             }
         }
     }
