@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fr.iut.pm.teammanager.R
 import com.fr.iut.pm.teammanager.model.Team
-import kotlinx.android.synthetic.main.item_list_team.view.*
+import kotlinx.android.synthetic.main.item_team.view.*
 
 class TeamRecyclerViewAdapter(private var teamList: List<Team>, private val listener: Callbacks) : RecyclerView.Adapter<TeamRecyclerViewAdapter.TeamViewHolder>() {
 
@@ -14,7 +14,7 @@ class TeamRecyclerViewAdapter(private var teamList: List<Team>, private val list
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = TeamViewHolder(
         LayoutInflater.from(parent.context).inflate(
-            R.layout.item_list_team,
+            R.layout.item_team,
             parent,
             false
         ), listener

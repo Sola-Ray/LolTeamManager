@@ -2,6 +2,7 @@ package com.fr.iut.pm.teammanager.data.persistance.dao
 
 import androidx.room.*
 import com.fr.iut.pm.teammanager.model.Team
+import androidx.room.OnConflictStrategy.REPLACE
 
 @Dao
 interface TeamDAO {
@@ -11,13 +12,13 @@ interface TeamDAO {
     @Query("SELECT * FROM teams WHERE id = :id")
     fun findById(id: Long): Team
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = REPLACE)
     fun insert(team: Team)
 
     @Insert
     fun insertAll(vararg teams: Team)
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+    @Update(onConflict = REPLACE)
     fun update(team: Team)
 
     @Delete

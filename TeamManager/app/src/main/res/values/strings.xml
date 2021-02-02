@@ -10,4 +10,17 @@
     <string name="txt_empty_team">Vous n\'avez pas encore créé de Team !</string>
     <string name="empty_team_imageview">Empty team imageView</string>
     <string name="fab_add_team">Fab add Team</string>
+    <string name="image_of_toplaner">Image of Toplaner</string>
+    <string name="image_of_jgler">Image of Jgler</string>
+    <string name="image_of_mid">Image of mid</string>
+    <string name="image_of_adc">Image of adc</string>
+    <string name="image_of_sup">Image of sup</string>
+    <string name="nom_equipe">Nom de l\'équipe</string>
+    <string name="team_nom">Nom</string>
+    <string name="toplaner">Toplaner</string>
+    <string name="jungler">Jungler</string>
+    <string name="midlaner">Midlaner</string>
+    <string name="adc">ADC</string>
+    <string name="support">Support</string>
+    <string name="add_team">Ajout d\'une équipe</string>
 </resources>

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.TeamActivity"
-    android:background="@drawable/background_diana"
     android:orientation="vertical">
 
 
@@ -15,7 +14,7 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="1"
-        tools:listitem="@layout/item_list_team"
+        tools:listitem="@layout/item_team"
         tools:showIn="@layout/main_activity" />
 
     <androidx.constraintlayout.widget.Group

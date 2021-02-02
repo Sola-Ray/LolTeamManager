@@ -16,7 +16,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class TeamActivity : SimpleFragmentActivity() {
+class TeamActivity : AppCompatActivity(), TeamFragment.OnInteractionListener {
 
     companion object {
         private const val MY_TEAM_ID = "my_team_id"
@@ -32,12 +32,14 @@ class TeamActivity : SimpleFragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         teamId = intent.getLongExtra(MY_TEAM_ID, NEW_TEAM_ID)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        testApi()
+        //testApi()
     }
 
-    override fun createFragment() = TeamFragment.newInstance(teamId)
-    //override
+    fun createFragment() = TeamFragment.newInstance(teamId)
+
+    override fun onTeamSaved() = finish()
+
+    override fun onTeamDeleted() = finish()
 
     private val url = "https://euw1.api.riotgames.com/"
 
