@@ -11,6 +11,7 @@ import com.fr.iut.pm.teammanager.R
 import com.fr.iut.pm.teammanager.data.persistance.TeamDatabase
 import com.fr.iut.pm.teammanager.model.Team
 import com.fr.iut.pm.teammanager.utils.TeamRecyclerViewAdapter
+import kotlinx.android.synthetic.main.team_list_fragment.*
 import kotlinx.android.synthetic.main.team_list_fragment.view.*
 import java.lang.RuntimeException
 
@@ -19,21 +20,10 @@ class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {
 
     private val teamListAdapter = TeamRecyclerViewAdapter(teamList, this)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("TEST", "onCreate TEAMLISTFRAG: ")
-        super.onCreate(savedInstanceState)
-        //setHasOptionsMenu(true) (à tester)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Log.d("test", "onCreateView: ")
         val view = inflater.inflate(R.layout.team_list_fragment, container, false)
         view.recycler_view.adapter = teamListAdapter
-        //view.recycler_view.layoutManager = GridLayoutManager(this.context, 2)
-
-        /* à tester */
         view.group_empty_view.visibility = if (teamList.isEmpty()) View.VISIBLE else View.GONE
-        // jusque là
         view.fab.setOnClickListener{ addNewTeam() }
         return view
     }
@@ -54,7 +44,6 @@ class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {
     }
 
     override fun onAttach(context: Context) {
-        Log.d("TEST", "onAttach: ")
         super.onAttach(context)
         if(context is OnInteractionListener) {
             listener = context
@@ -76,7 +65,7 @@ class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {
     private fun updateList() {
         teamList = TeamDatabase.getInstance().teamDAO().getAll()
         teamListAdapter.updateList(teamList)
-        //group_empty_view.visibility = if (dogList.isEmpty()) View.VISIBLE else View.GONE
+        group_empty_view.visibility = if (teamList.isEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun removeTeam(team: Team) {

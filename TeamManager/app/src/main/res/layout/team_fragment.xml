@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/activity_margin"
-    tools:context=".activity.TeamActivity">
+    tools:context=".activity.TeamActivity"
+    android:background="@drawable/wtxt_background"
+    android:layout_gravity="center">
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -20,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="@string/nom_equipe"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/edit_team_name"
@@ -122,6 +124,4 @@
         android:importantForAutofill="no"
         android:hint="@string/jungler"
         android:layout_height="wrap_content" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

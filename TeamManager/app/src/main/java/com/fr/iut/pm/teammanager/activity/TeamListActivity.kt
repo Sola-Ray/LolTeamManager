@@ -1,7 +1,6 @@
 package com.fr.iut.pm.teammanager.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.fr.iut.pm.teammanager.R
@@ -10,7 +9,7 @@ import com.fr.iut.pm.teammanager.fragment.TeamListFragment
 import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
 
 class TeamListActivity : AppCompatActivity(),
-    TeamListFragment.OnInteractionListener {
+    TeamListFragment.OnInteractionListener, TeamFragment.OnInteractionListener {
 
     private fun createFragment() = TeamListFragment()
 
@@ -20,16 +19,11 @@ class TeamListActivity : AppCompatActivity(),
 
         val teamBtn = findViewById<Button>(R.id.btn_teams)
 
-        Log.d("TEST", "onCreate: LE MAIN")
-
         teamBtn.setOnClickListener{
-            Log.d("TEST", "onCreate: BTN TEAM CLICKED")
             teamButtonClicked()
         }
 
-
         if(supportFragmentManager.findFragmentById(R.id.container) == null) {
-            Log.d("TEST", "onCreate: frag")
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, createFragment())
                 .commit()
@@ -37,13 +31,10 @@ class TeamListActivity : AppCompatActivity(),
     }
 
     override fun onTeamSelected(teamId: Long) {
-        //if (isTwoPane) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, TeamFragment.newInstance(teamId))
-                    .commit()
-        /*} else {
-            startActivity(TeamActivity.getIntent(this, teamId))
-        }*/
+        /*supportFragmentManager.beginTransaction()
+            .replace(R.id.container, TeamFragment.newInstance(teamId))
+            .commit()*/
+        startActivity(TeamActivity.getIntent(this, teamId))
     }
 
     override fun onAddNewTeam() = startActivity(TeamActivity.getIntent(this, NEW_TEAM_ID))
@@ -62,11 +53,11 @@ class TeamListActivity : AppCompatActivity(),
         }*/
     }
 
-    /*override fun onTeamDeleted() {
-        if (isTwoPane) {
-            removeDisplayedFragment()
-        } else
-            finish()
-    }*/
+    override fun onTeamSaved() {
+    }
+
+    override fun onTeamDeleted() {
+        finish()
+    }
 
 }

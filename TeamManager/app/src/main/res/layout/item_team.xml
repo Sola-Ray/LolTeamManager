@@ -2,18 +2,28 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view_team"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
     card_view:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_card_view_team"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/activity_margin">
+        android:padding="@dimen/activity_margin"
+        android:background="@drawable/txt_background">
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="img_user_top,view_user_top,img_user_jgl,view_user_jgl,
+            img_user_mid,view_user_mid,img_user_adc,view_user_adc,img_user_sup,view_user_bot"/>
 
         <TextView
             android:id="@+id/view_team_name"
@@ -21,109 +31,121 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/superBrown"
-            tools:text="Team's name" />
+            tools:text="Team's name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <LinearLayout
-            android:id="@+id/layout_card_view_user_team"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/img_user_top"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingVertical="@dimen/activity_margin">
+            android:contentDescription="@string/image_of_toplaner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_team_name"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/img_user_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/image_of_toplaner" />
-                <TextView
-                    android:id="@+id/view_user_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/superGrey"
-                    tools:text="Toplaner"
-                    android:layout_margin="@dimen/view_user_margin"/>
-            </LinearLayout>
+        <TextView
+            android:id="@+id/view_user_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/superBrown"
+            tools:text="Toplaner"
+            app:layout_constraintBottom_toTopOf="@id/view_user_jgl"
+            app:layout_constraintLeft_toRightOf="@id/img_user_top"
+            app:layout_constraintTop_toBottomOf="@id/view_team_name"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/img_user_jgl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/image_of_jgler" />
-                <TextView
-                    android:id="@+id/view_user_jgl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/superGrey"
-                    tools:text="Jungler"
-                    android:layout_margin="@dimen/view_user_margin"/>
-            </LinearLayout>
+        <ImageView
+            android:id="@+id/img_user_jgl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_of_jgler"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_user_top"/>
+        <TextView
+            android:id="@+id/view_user_jgl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/superBrown"
+            tools:text="Jungler"
+            android:layout_margin="@dimen/view_user_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingStart="@dimen/activity_margin"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/img_user_mid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/image_of_mid" />
-                <TextView
-                    android:id="@+id/view_user_mid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/superGrey"
-                    tools:text="Midlaner"
-                    android:layout_margin="@dimen/view_user_margin"/>
-            </LinearLayout>
+        <ImageView
+            android:id="@+id/img_user_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_of_mid"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_user_jgl"/>
+        <TextView
+            android:id="@+id/view_user_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/superBrown"
+            tools:text="Midlaner"
+            android:layout_margin="@dimen/view_user_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingStart="@dimen/activity_margin"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_info_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_change_background_btn"
+            android:text="@string/info"
+            android:layout_margin="@dimen/view_user_margin"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/img_user_adc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/image_of_adc" />
-                <TextView
-                    android:id="@+id/view_user_adc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/superGrey"
-                    tools:text="Adcarry"
-                    android:layout_margin="@dimen/view_user_margin"/>
-            </LinearLayout>
+        <ImageView
+            android:id="@+id/img_user_adc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_of_adc"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_user_mid"/>
+        <TextView
+            android:id="@+id/view_user_adc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/superBrown"
+            tools:text="Adcarry"
+            android:layout_margin="@dimen/view_user_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingStart="@dimen/activity_margin"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_info_adc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_change_background_btn"
+            android:text="@string/info"
+            android:layout_margin="@dimen/view_user_margin"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/img_user_sup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/image_of_sup"/>
-                <TextView
-                    android:id="@+id/view_user_bot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/superGrey"
-                    tools:text="Support"
-                    android:layout_margin="@dimen/view_user_margin"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/img_user_sup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_of_sup"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_user_adc"/>
+        <TextView
+            android:id="@+id/view_user_bot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/superBrown"
+            tools:text="Support"
+            android:layout_margin="@dimen/view_user_margin"
+            android:paddingEnd="@dimen/activity_margin"
+            android:paddingStart="@dimen/activity_margin"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_info_sup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_change_background_btn"
+            android:text="@string/info"
+            android:layout_margin="@dimen/view_user_margin"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

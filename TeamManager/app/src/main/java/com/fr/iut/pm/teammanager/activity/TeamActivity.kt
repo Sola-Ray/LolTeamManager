@@ -32,6 +32,13 @@ class TeamActivity : AppCompatActivity(), TeamFragment.OnInteractionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         teamId = intent.getLongExtra(MY_TEAM_ID, NEW_TEAM_ID)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_activity)
+        if(supportFragmentManager.findFragmentById(R.id.container) == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, createFragment())
+                .commitNow()
+        }
+
         //testApi()
     }
 
