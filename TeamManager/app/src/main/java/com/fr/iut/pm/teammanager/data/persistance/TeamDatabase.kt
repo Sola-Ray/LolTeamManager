@@ -53,7 +53,11 @@ abstract class TeamDatabase : RoomDatabase() {
 
         private fun dirtyPopulateDB() {
             getInstance().teamDAO().apply {
-                insert(Team ("Abusing Mid Gap", User("Minyan"), User("Sylvesster"), User("Sola"),User("Moguo"), User("Hart")))
+                insert(Team ("Abusing Mid Gap", User("Minyan", 0),
+                    User("Sylvesster", 0),
+                    User("Sola", 0),
+                    User("Moguo", 0),
+                    User("Hart", 0)))
             }
         }
     }

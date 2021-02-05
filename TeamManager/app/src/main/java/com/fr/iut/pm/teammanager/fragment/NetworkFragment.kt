@@ -20,7 +20,7 @@ class NetworkFragment {
             .build()
 
         val service = retrofit.create(ApiRequest::class.java)
-        val teamRequest = service.getUser()
+        val teamRequest = service.getUser("RGAPI-c53f4941-a1c5-4b09-9580-44702dcdb545")
 
         teamRequest.enqueue(object: Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {

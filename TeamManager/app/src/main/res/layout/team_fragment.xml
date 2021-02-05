@@ -33,7 +33,8 @@
         app:layout_constraintStart_toEndOf="@id/barrier"
         android:importantForAutofill="no"
         android:hint="@string/team_nom"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:selectAllOnFocus="true"/>
 
     <TextView
         android:id="@+id/text_toplaner"

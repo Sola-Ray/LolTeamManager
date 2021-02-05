@@ -39,10 +39,8 @@ class TeamFragment : Fragment() {
         if(teamId == NEW_TEAM_ID) {
             requireActivity().title = getString(R.string.add_team)
             team = Team()
-            Log.d("test", "onCreate: not find")
         } else {
             team = TeamDatabase.getInstance().teamDAO().findById(teamId)
-            Log.d("test", "onCreate: find team")
         }
     }
 
@@ -53,7 +51,6 @@ class TeamFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        Log.d("test", "onCreateViewTeamFragment: ")
         val view = inflater.inflate(R.layout.team_fragment, container, false)
 
         view.edit_team_name.setText(team.name)
