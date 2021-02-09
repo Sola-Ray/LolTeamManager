@@ -22,10 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="right"
-            card_view:constraint_referenced_ids="img_user_top, view_user_top,
-            img_user_jgl,view_user_jgl"/>
-<!--            app:constraint_referenced_ids="img_user_top,view_user_top,img_user_jgl,view_user_jgl,-->
-<!--            img_user_mid,view_user_mid,img_user_adc,view_user_adc,img_user_sup,view_user_bot"/>-->
+            app:constraint_referenced_ids="img_user_top,view_user_top,img_user_jgl,view_user_jgl,
+img_user_mid,view_user_mid,img_user_adc,view_user_adc,img_user_sup,view_user_bot"/>
 
         <TextView
             android:id="@+id/view_team_name"
@@ -40,11 +38,12 @@
 
         <ImageView
             android:id="@+id/img_user_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:contentDescription="@string/image_of_toplaner"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_team_name"/>
+            app:layout_constraintTop_toBottomOf="@id/view_team_name"
+            android:paddingBottom="@dimen/padding_bottom_img"/>
 
         <TextView
             android:id="@+id/view_user_top"
@@ -57,8 +56,7 @@
             app:layout_constraintTop_toBottomOf="@id/view_team_name"
             android:layout_margin="@dimen/view_user_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingStart="@dimen/activity_margin"
-            android:paddingBottom="@dimen/user_padding_bottom"/>
+            android:paddingStart="@dimen/activity_margin"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_info_top"
@@ -73,11 +71,12 @@
 
         <ImageView
             android:id="@+id/img_user_jgl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:contentDescription="@string/image_of_jgler"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_user_top"/>
+            app:layout_constraintTop_toBottomOf="@id/img_user_top"
+            android:paddingBottom="@dimen/padding_bottom_img"/>
         <TextView
             android:id="@+id/view_user_jgl"
             android:layout_width="wrap_content"
@@ -86,11 +85,10 @@
             android:textColor="@color/superBrown"
             tools:text="Jungler"
             app:layout_constraintLeft_toRightOf="@id/img_user_jgl"
-            app:layout_constraintTop_toBottomOf="@id/view_user_top"
+            app:layout_constraintTop_toBottomOf="@id/img_user_top"
             android:layout_margin="@dimen/view_user_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingStart="@dimen/activity_margin"
-            android:paddingBottom="@dimen/user_padding_bottom"/>
+            android:paddingStart="@dimen/activity_margin"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_info_jgl"
@@ -105,11 +103,12 @@
 
         <ImageView
             android:id="@+id/img_user_mid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:contentDescription="@string/image_of_mid"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_user_jgl"/>
+            app:layout_constraintTop_toBottomOf="@id/img_user_jgl"
+            android:paddingBottom="@dimen/padding_bottom_img"/>
         <TextView
             android:id="@+id/view_user_mid"
             android:layout_width="wrap_content"
@@ -118,11 +117,10 @@
             android:textColor="@color/superBrown"
             tools:text="Midlaner"
             app:layout_constraintLeft_toRightOf="@id/img_user_mid"
-            app:layout_constraintTop_toBottomOf="@id/view_user_jgl"
+            app:layout_constraintTop_toBottomOf="@id/img_user_jgl"
             android:layout_margin="@dimen/view_user_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingStart="@dimen/activity_margin"
-            android:paddingBottom="@dimen/user_padding_bottom"/>
+            android:paddingStart="@dimen/activity_margin"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_info_mid"
             android:layout_width="wrap_content"
@@ -135,11 +133,12 @@
 
         <ImageView
             android:id="@+id/img_user_adc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:contentDescription="@string/image_of_adc"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_user_mid"/>
+            app:layout_constraintTop_toBottomOf="@id/img_user_mid"
+            android:paddingBottom="@dimen/padding_bottom_img"/>
         <TextView
             android:id="@+id/view_user_adc"
             android:layout_width="wrap_content"
@@ -148,11 +147,10 @@
             android:textColor="@color/superBrown"
             tools:text="Adcarry"
             app:layout_constraintLeft_toRightOf="@id/img_user_adc"
-            app:layout_constraintTop_toBottomOf="@id/view_user_mid"
+            app:layout_constraintTop_toBottomOf="@id/img_user_mid"
             android:layout_margin="@dimen/view_user_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingStart="@dimen/activity_margin"
-            android:paddingBottom="@dimen/user_padding_bottom"/>
+            android:paddingStart="@dimen/activity_margin"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_info_adc"
             android:layout_width="wrap_content"
@@ -165,11 +163,12 @@
 
         <ImageView
             android:id="@+id/img_user_sup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:contentDescription="@string/image_of_sup"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_user_adc"/>
+            app:layout_constraintTop_toBottomOf="@id/img_user_adc"
+            android:paddingBottom="@dimen/padding_bottom_img"/>
         <TextView
             android:id="@+id/view_user_bot"
             android:layout_width="wrap_content"
@@ -178,11 +177,10 @@
             android:textColor="@color/superBrown"
             tools:text="Support"
             app:layout_constraintLeft_toRightOf="@id/img_user_sup"
-            app:layout_constraintTop_toBottomOf="@id/view_user_adc"
+            app:layout_constraintTop_toBottomOf="@id/img_user_adc"
             android:layout_margin="@dimen/view_user_margin"
             android:paddingEnd="@dimen/activity_margin"
-            android:paddingStart="@dimen/activity_margin"
-            android:paddingBottom="@dimen/user_padding_bottom"/>
+            android:paddingStart="@dimen/activity_margin"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_info_sup"
             android:layout_width="wrap_content"

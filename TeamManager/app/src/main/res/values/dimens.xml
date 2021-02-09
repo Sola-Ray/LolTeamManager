@@ -3,4 +3,5 @@
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="view_user_margin">5dp</dimen>
     <dimen name="user_padding_bottom">30dp</dimen>
+    <dimen name="padding_bottom_img">5dp</dimen>
 </resources>

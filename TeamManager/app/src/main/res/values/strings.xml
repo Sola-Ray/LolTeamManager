@@ -24,4 +24,18 @@
     <string name="support">Support</string>
     <string name="add_team">Ajout d\'une équipe</string>
     <string name="info">Infos</string>
+    <string name="ranked_solo_5x5">Ranked Solo 5x5</string>
+    <string name="_18_6_12">18/6/12</string>
+    <string name="img_kda">img kda</string>
+    <string name="_16k">16k</string>
+    <string name="_150">150</string>
+    <string name="img_item_1">img item 1</string>
+    <string name="img_item_2">img item 2</string>
+    <string name="img_item_3">img item 3</string>
+    <string name="img_item_4">img item 4</string>
+    <string name="img_item_5">img item 5</string>
+    <string name="img_item_6">img item 6</string>
+    <string name="img_item_7">img item 7</string>
+    <string name="_25_45">25:45</string>
+    <string name="_12_06_15">12/06/15</string>
 </resources>

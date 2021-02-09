@@ -12,10 +12,13 @@ data class User(
     val username: String,
     @field:Json(name = "profileIconId")
     val profileIconId: Int?,
+    @field:Json(name = "accountId")
+    val accountId: String?,
     @field:Json(name = "id")
+    val summonerId: String?,
     @PrimaryKey(autoGenerate = true)
-    val id: Long = NEW_USER_ID) {
+    val userId: Long = NEW_USER_ID) {
     override fun toString(): String {
-        return "$id : $username"
+        return "$userId : $username"
     }
 }

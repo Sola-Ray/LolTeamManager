@@ -4,19 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.fr.iut.pm.teammanager.R
-import com.fr.iut.pm.teammanager.api.ApiRequest
 import com.fr.iut.pm.teammanager.fragment.TeamFragment
 import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
-import com.fr.iut.pm.teammanager.model.User
-import okhttp3.OkHttpClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.GET
 
 class TeamActivity : AppCompatActivity(), TeamFragment.OnInteractionListener {
 
@@ -40,36 +30,11 @@ class TeamActivity : AppCompatActivity(), TeamFragment.OnInteractionListener {
                 .replace(R.id.container, createFragment())
                 .commitNow()
         }
-
-        testApi()
     }
 
-    fun createFragment() = TeamFragment.newInstance(teamId)
+    private fun createFragment() = TeamFragment.newInstance(teamId)
 
     override fun onTeamSaved() = finish()
 
     override fun onTeamDeleted() = finish()
-
-    private val url = "https://euw1.api.riotgames.com/"
-
-    fun testApi() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(url)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(ApiRequest::class.java)
-        val teamRequest = service.getUser("RGAPI-c53f4941-a1c5-4b09-9580-44702dcdb545")
-
-        teamRequest.enqueue(object: Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                Log.d("API", "onResponse: " + response.code())
-                val user = response.body()
-                Log.d("API","User ${user?.username} ${user?.id}")
-            }
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.e("API", "Error : $t")
-            }
-        })
-    }
 }

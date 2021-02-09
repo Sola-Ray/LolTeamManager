@@ -1,12 +1,17 @@
 package com.fr.iut.pm.teammanager.activity
 
+import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.fr.iut.pm.teammanager.R
+import com.fr.iut.pm.teammanager.fragment.NetworkFragment
 import com.fr.iut.pm.teammanager.fragment.TeamFragment
 import com.fr.iut.pm.teammanager.fragment.TeamListFragment
 import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
+import com.squareup.picasso.Picasso
 
 class TeamListActivity : AppCompatActivity(),
     TeamListFragment.OnInteractionListener, TeamFragment.OnInteractionListener {

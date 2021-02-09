@@ -46,7 +46,7 @@ abstract class UserDatabase : RoomDatabase() {
 
         private fun dirtyPopulateDB() {
             getInstance().userDAO().apply {
-                insert(User("Test", 1234))
+                insert(User("Test", 1234, "0", "0"))
             }
         }
     }

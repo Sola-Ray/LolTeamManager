@@ -2,6 +2,11 @@ package com.fr.iut.pm.teammanager.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.text.format.DateFormat
@@ -9,6 +14,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -16,7 +22,13 @@ import com.fr.iut.pm.teammanager.R
 import com.fr.iut.pm.teammanager.data.persistance.TeamDatabase
 import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
 import com.fr.iut.pm.teammanager.model.Team
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_team.view.*
 import kotlinx.android.synthetic.main.team_fragment.view.*
+import java.io.IOException
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
 
 class TeamFragment : Fragment() {
 
@@ -59,6 +71,7 @@ class TeamFragment : Fragment() {
         view.edit_midlaner.setText(team.midlaner?.username)
         view.edit_adc.setText(team.botlaner?.username)
         view.edit_support.setText(team.support?.username)
+
         return view
     }
 

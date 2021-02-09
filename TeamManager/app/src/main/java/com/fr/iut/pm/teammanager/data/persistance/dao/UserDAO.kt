@@ -8,7 +8,7 @@ interface UserDAO {
     @Query("SELECT * FROM users")
     fun getAll(): List<User>
 
-    @Query("SELECT * FROM users WHERE id = :id")
+    @Query("SELECT * FROM users WHERE userId = :id")
     fun findById(id: Long): User
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
