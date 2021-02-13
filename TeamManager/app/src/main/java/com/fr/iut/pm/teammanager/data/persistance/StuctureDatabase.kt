@@ -5,27 +5,27 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.fr.iut.pm.teammanager.TeamApplication
-import com.fr.iut.pm.teammanager.data.persistance.dao.UserDAO
-import com.fr.iut.pm.teammanager.model.User
+import com.fr.iut.pm.teammanager.data.persistance.dao.StructureDAO
+import com.fr.iut.pm.teammanager.model.Structure
 
-@Database(entities = [User::class], version = 1)
-abstract class UserDatabase : RoomDatabase() {
+@Database(entities = [Structure::class], version = 1)
+abstract class StuctureDatabase : RoomDatabase() {
 
-    abstract fun userDAO(): UserDAO
+    abstract fun structDAO(): StructureDAO
 
     companion object {
         private lateinit var application: Application
         @Volatile
-        private var instance: UserDatabase? = null
+        private var instance: StuctureDatabase? = null
 
-        fun getInstance(): UserDatabase {
+        private fun getInstance(): StuctureDatabase {
             if (::application.isInitialized) {
                 if (instance == null)
                     synchronized(this) {
                         if (instance == null)
                             instance = Room.inMemoryDatabaseBuilder(
                                 application.applicationContext,
-                                UserDatabase::class.java)
+                                StuctureDatabase::class.java)
                                 .allowMainThreadQueries()
                                 .build()
                         dirtyPopulateDB()
@@ -45,8 +45,8 @@ abstract class UserDatabase : RoomDatabase() {
         }
 
         private fun dirtyPopulateDB() {
-            getInstance().userDAO().apply {
-                insert(User("Test", 1234, "0", "0"))
+            getInstance().structDAO().apply {
+                insert(Structure("Test"))
             }
         }
     }

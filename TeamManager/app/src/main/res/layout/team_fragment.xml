@@ -1,128 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/activity_margin"
-    tools:context=".activity.TeamActivity"
-    android:background="@drawable/wtxt_background"
-    android:layout_gravity="center">
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.fr.iut.pm.teammanager.utils.Converters"/>
+        <variable
+            name="teamVM"
+            type="com.fr.iut.pm.teammanager.viewmodel.TeamViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:barrierDirection="right"
-        app:constraint_referenced_ids="text_team_name,text_toplaner,text_jgler,text_midlaner,text_adc,text_support"/>
+        android:padding="@dimen/activity_margin"
+        tools:context=".activity.TeamActivity"
+        android:background="@drawable/wtxt_background"
+        android:layout_gravity="center">
 
-    <TextView
-        android:id="@+id/text_team_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nom_equipe"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="text_team_name,text_toplaner,text_jgler,text_midlaner,text_adc,text_support"/>
 
-    <EditText
-        android:id="@+id/edit_team_name"
-        android:layout_width="0dp"
-        android:inputType="textCapWords"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_team_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/barrier"
-        android:importantForAutofill="no"
-        android:hint="@string/team_nom"
-        android:layout_height="wrap_content"
-        android:selectAllOnFocus="true"/>
+        <TextView
+            android:id="@+id/text_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nom_equipe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/text_toplaner"
-        android:layout_width="wrap_content"
-        android:text="@string/toplaner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_team_name"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit_toplaner"
-        android:layout_width="0dp"
-        android:inputType="textCapWords"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_toplaner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/barrier"
-        android:importantForAutofill="no"
-        android:hint="@string/toplaner"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_team_name"
+            android:layout_width="0dp"
+            android:inputType="textCapWords"
+            android:text="@={teamVM.team.name}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_team_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            android:importantForAutofill="no"
+            android:hint="@string/team_nom"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"/>
 
-    <TextView
-        android:id="@+id/text_midlaner"
-        android:layout_width="wrap_content"
-        android:text="@string/midlaner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_jgler"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit_midlaner"
-        android:layout_width="0dp"
-        android:inputType="textCapWords"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_midlaner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/barrier"
-        android:importantForAutofill="no"
-        android:hint="@string/midlaner"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/text_toplaner"
+            android:layout_width="wrap_content"
+            android:text="@string/toplaner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_team_name"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_toplaner"
+            android:layout_width="0dp"
+            android:inputType="textCapWords"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_toplaner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            android:importantForAutofill="no"
+            android:hint="@string/toplaner"
+            android:text="@={teamVM.team.toplaner.username}"
+            android:layout_height="wrap_content" />
+<!--        android:text="@={Converters.userToString(teamVM.team.toplaner).split(&quot;,&quot;)[0]}"-->
 
-    <TextView
-        android:id="@+id/text_adc"
-        android:layout_width="wrap_content"
-        android:text="@string/adc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_midlaner"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit_adc"
-        android:layout_width="0dp"
-        android:inputType="textCapWords"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_adc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/barrier"
-        android:importantForAutofill="no"
-        android:hint="@string/adc"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/text_midlaner"
+            android:layout_width="wrap_content"
+            android:text="@string/midlaner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_jgler"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_midlaner"
+            android:layout_width="0dp"
+            android:inputType="textCapWords"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_midlaner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            android:importantForAutofill="no"
+            android:hint="@string/midlaner"
+            android:text="@{teamVM.team.midlaner.username}"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/text_support"
-        android:layout_width="wrap_content"
-        android:text="@string/support"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_adc"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit_support"
-        android:layout_width="0dp"
-        android:inputType="textCapWords"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_support"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/barrier"
-        android:importantForAutofill="no"
-        android:hint="@string/support"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/text_adc"
+            android:layout_width="wrap_content"
+            android:text="@string/adc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_midlaner"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_adc"
+            android:layout_width="0dp"
+            android:inputType="textCapWords"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_adc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            android:importantForAutofill="no"
+            android:hint="@string/adc"
+            android:text="@{teamVM.team.botlaner.username}"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/text_jgler"
-        android:layout_width="wrap_content"
-        android:text="@string/jungler"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_toplaner"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit_jgler"
-        android:layout_width="0dp"
-        android:inputType="textCapWords"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_jgler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/barrier"
-        android:importantForAutofill="no"
-        android:hint="@string/jungler"
-        android:layout_height="wrap_content" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_support"
+            android:layout_width="wrap_content"
+            android:text="@string/support"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_adc"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_support"
+            android:layout_width="0dp"
+            android:inputType="textCapWords"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_support"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            android:importantForAutofill="no"
+            android:hint="@string/support"
+            android:text="@{teamVM.team.support.username}"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/text_jgler"
+            android:layout_width="wrap_content"
+            android:text="@string/jungler"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_toplaner"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_jgler"
+            android:layout_width="0dp"
+            android:inputType="textCapWords"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_jgler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            android:importantForAutofill="no"
+            android:hint="@string/jungler"
+            android:text="@{teamVM.team.jungler.username}"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,22 +3,27 @@ package com.fr.iut.pm.teammanager.fragment
 import android.util.Log
 import android.widget.ImageView
 import com.fr.iut.pm.teammanager.api.ApiRequest
+import com.fr.iut.pm.teammanager.api.OnDataLoaded
 import com.fr.iut.pm.teammanager.model.User
 import com.squareup.picasso.Picasso
+import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.ArrayBlockingQueue
+import java.util.concurrent.BlockingQueue
+
 
 class NetworkFragment {
 
     companion object {
-        private const val API_KEY = "RGAPI-fe5874ac-8519-4c46-b55f-6b7901008966"
+        private const val API_KEY = "RGAPI-500fecaa-5b15-41b2-b7a1-4e5d8d7f7d72"
         private const val URL = "https://euw1.api.riotgames.com"
     }
 
-    fun getUserApiFromString(name: String?, imgView: ImageView) {
+    fun setUserFromStringAndApi(name: String?, onDataLoaded: OnDataLoaded) {
         val retrofit = Retrofit.Builder()
             .baseUrl(URL)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -29,19 +34,19 @@ class NetworkFragment {
 
         teamRequest.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
-                val userTricky = response.body()
-                Picasso.get()
-                    .load("https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/${userTricky?.profileIconId}.png")
-                    .into(imgView)
+                val user = response.body()
+                Log.d("test", "onResponse: $user")
+                onDataLoaded.onSucess(user)
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 Log.e("API", "Error : $t")
+                onDataLoaded.onFailure()
             }
         })
     }
 
-    fun getUserHistory(name: String?, imgView: ImageView) {
+    fun getUserApiFromString(name: String?, imgView: ImageView?) {
         val retrofit = Retrofit.Builder()
             .baseUrl(URL)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -52,9 +57,9 @@ class NetworkFragment {
 
         teamRequest.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
-                val userTricky = response.body()
+                val user = response.body()
                 Picasso.get()
-                    .load("https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/${userTricky?.profileIconId}.png")
+                    .load("https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/${user?.profileIconId}.png")
                     .into(imgView)
             }
 
@@ -63,4 +68,24 @@ class NetworkFragment {
             }
         })
     }
+
+    /*fun getUserHistory(accountId: String?) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(URL)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(ApiRequest::class.java)
+        val teamRequest = service.getHistory(accountId, API_KEY)
+
+        teamRequest.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                val user = response.body()
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Log.e("API", "Error : $t")
+            }
+        })
+    }*/
 }

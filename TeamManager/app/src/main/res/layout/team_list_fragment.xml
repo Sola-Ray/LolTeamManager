@@ -1,60 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.TeamActivity"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="com.fr.iut.pm.teammanager.utils.Converters"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        <variable
+            name="teamListVM"
+            type="com.fr.iut.pm.teammanager.viewmodel.TeamListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="1"
-        tools:listitem="@layout/item_team"
-        tools:showIn="@layout/main_activity" />
+        tools:context=".activity.TeamActivity"
+        android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_empty_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="empty_img,txt_view_empty"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
+            tools:listitem="@layout/item_team"
+            tools:showIn="@layout/main_activity" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_view_empty"
-        android:hint="@string/txt_empty_team"
-        android:background="@drawable/wtxt_background"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/empty_img"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:gravity="center_horizontal"
-        android:textSize="24sp"/>
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{Converters.listEmptyToVisibility(teamListVM.teamList.empty)}"
+            app:constraint_referenced_ids="empty_img,txt_view_empty"/>
 
-    <ImageView
-        android:id="@+id/empty_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/txt_view_empty"
-        app:layout_constraintTop_toBottomOf="@id/txt_view_empty"
-        app:layout_constraintRight_toRightOf="@id/txt_view_empty"
-        android:contentDescription="@string/empty_team_imageview" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_view_empty"
+            android:hint="@string/txt_empty_team"
+            android:background="@drawable/wtxt_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/empty_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center_horizontal"
+            android:textSize="24sp"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_margin"
-        android:background="@drawable/selector_change_background_btn"
-        android:contentDescription="@string/fab_add_team"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <ImageView
+            android:id="@+id/empty_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/txt_view_empty"
+            app:layout_constraintTop_toBottomOf="@id/txt_view_empty"
+            app:layout_constraintRight_toRightOf="@id/txt_view_empty"
+            android:contentDescription="@string/empty_team_imageview" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_margin"
+            android:background="@drawable/selector_change_background_btn"
+            android:contentDescription="@string/fab_add_team"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

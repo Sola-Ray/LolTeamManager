@@ -2,30 +2,42 @@ package com.fr.iut.pm.teammanager.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.fr.iut.pm.teammanager.R
 import com.fr.iut.pm.teammanager.data.persistance.TeamDatabase
+import com.fr.iut.pm.teammanager.databinding.TeamFragmentBinding
+import com.fr.iut.pm.teammanager.databinding.TeamListFragmentBinding
 import com.fr.iut.pm.teammanager.model.Team
 import com.fr.iut.pm.teammanager.utils.TeamRecyclerViewAdapter
+import com.fr.iut.pm.teammanager.viewmodel.TeamListViewModel
 import kotlinx.android.synthetic.main.team_list_fragment.*
 import kotlinx.android.synthetic.main.team_list_fragment.view.*
 import java.lang.RuntimeException
 
 class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {
-    private var teamList = TeamDatabase.getInstance().teamDAO().getAll()
+    private val teamListVM by viewModels<TeamListViewModel>()
 
-    private val teamListAdapter = TeamRecyclerViewAdapter(teamList, this)
+    private val teamListAdapter = TeamRecyclerViewAdapter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.team_list_fragment, container, false)
-        view.recycler_view.adapter = teamListAdapter
-        view.group_empty_view.visibility = if (teamList.isEmpty()) View.VISIBLE else View.GONE
-        view.fab.setOnClickListener{ addNewTeam() }
-        return view
+        val viewBinding = TeamListFragmentBinding.inflate(inflater)
+        viewBinding.teamListVM = teamListVM
+        viewBinding.lifecycleOwner = viewLifecycleOwner
+
+        viewBinding.recyclerView.adapter = teamListAdapter
+
+        teamListVM.teamList.observe(viewLifecycleOwner) {
+            teamListAdapter.submitList(it)
+        }
+
+        viewBinding.fab.setOnClickListener { addNewTeam() }
+
+        return viewBinding.root
     }
 
     private var listener: OnInteractionListener? = null
@@ -57,21 +69,8 @@ class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {
         listener = null
     }
 
-    override fun onResume() {
-        super.onResume()
-        updateList()
-    }
-
-    private fun updateList() {
-        teamList = TeamDatabase.getInstance().teamDAO().getAll()
-        teamListAdapter.updateList(teamList)
-        group_empty_view.visibility = if (teamList.isEmpty()) View.VISIBLE else View.GONE
-    }
-
     private fun removeTeam(team: Team) {
-        val dao = TeamDatabase.getInstance().teamDAO()
-        dao.delete(team)
-        updateList()
+        teamListVM.deleteTeam(team)
     }
 
 }

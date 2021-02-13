@@ -38,4 +38,6 @@
     <string name="img_item_7">img item 7</string>
     <string name="_25_45">25:45</string>
     <string name="_12_06_15">12/06/15</string>
+    <string name="action_save">Action save</string>
+    <string name="action_delete">Action delete</string>
 </resources>
