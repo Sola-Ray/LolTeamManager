@@ -2,14 +2,15 @@ package com.fr.iut.pm.teammanager.data.persistance
 
 import android.app.Application
 import android.util.Log
-import androidx.databinding.ObservableField
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.fr.iut.pm.teammanager.TeamApplication
+import com.fr.iut.pm.teammanager.api.OnDataLoaded
 import com.fr.iut.pm.teammanager.converter.UserToStringConverter
 import com.fr.iut.pm.teammanager.data.persistance.dao.TeamDAO
+import com.fr.iut.pm.teammanager.fragment.NetworkFragment
 import com.fr.iut.pm.teammanager.model.Team
 import com.fr.iut.pm.teammanager.model.User
 
@@ -36,7 +37,7 @@ abstract class TeamDatabase : RoomDatabase() {
                                 .allowMainThreadQueries()
                                 .build()
                         }
-                        dirtyPopulateDB()
+                        //dirtyPopulateDB()
                     }
                 return instance!!
             } else
@@ -52,14 +53,14 @@ abstract class TeamDatabase : RoomDatabase() {
             application = app
         }
 
-        private fun dirtyPopulateDB() {
+        /*private fun dirtyPopulateDB() {
             getInstance().teamDAO().apply {
-                insert(Team ("Abusing Mid Gap", User("Minyan Chan", 0, "1", "1"),
+                insert(Team ("Abusing Mid Gap", User("Minyan Chan", 0, "0", "0"),
                     User("Silvesster", 0, "0", "0"),
                     User("Soła", 0, "0", "0"),
                     User("Rayon Alcool", 0, "0", "0"),
                     User("Timoη", 0, "0", "0")))
             }
-        }
+        }*/
     }
 }

@@ -1,7 +1,5 @@
 package com.fr.iut.pm.teammanager.viewmodel
 
-import androidx.databinding.BaseObservable
-import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +7,6 @@ import com.fr.iut.pm.teammanager.data.persistance.TeamDatabase
 import com.fr.iut.pm.teammanager.data.persistance.TeamRepository
 import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
 import com.fr.iut.pm.teammanager.model.Team
-import com.fr.iut.pm.teammanager.model.User
 import kotlinx.coroutines.launch
 
 class TeamViewModel(teamId: Long) : ViewModel() {

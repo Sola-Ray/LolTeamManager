@@ -40,12 +40,6 @@ class TeamListActivity : AppCompatActivity(),
 
     override fun onAddNewTeam() = startActivity(TeamActivity.getIntent(this, NEW_TEAM_ID))
 
-    private fun removeDisplayedFragment() {
-        supportFragmentManager.findFragmentById(R.id.container)?.let {
-            supportFragmentManager.beginTransaction().remove(it).commit()
-        }
-    }
-
     private fun teamButtonClicked(){
         if(supportFragmentManager.findFragmentByTag(TEAM_LIST_FRAGMENT) == null) {
             supportFragmentManager.beginTransaction()

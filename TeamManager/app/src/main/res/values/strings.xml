@@ -40,4 +40,6 @@
     <string name="_12_06_15">12/06/15</string>
     <string name="action_save">Action save</string>
     <string name="action_delete">Action delete</string>
+    <string name="team_error_title">Erreur</string>
+    <string name="team_error_message">Veuillez entrer un nom pour l\'équipe !</string>
 </resources>

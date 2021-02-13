@@ -4,6 +4,6 @@ import com.fr.iut.pm.teammanager.model.User
 
 interface OnDataLoaded {
 
-    fun onSucess(value: User?)
+    fun onSuccess(value: User?)
     fun onFailure()
 }

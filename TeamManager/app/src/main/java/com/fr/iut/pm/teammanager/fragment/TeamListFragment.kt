@@ -7,16 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ItemTouchHelper
-import com.fr.iut.pm.teammanager.R
-import com.fr.iut.pm.teammanager.data.persistance.TeamDatabase
-import com.fr.iut.pm.teammanager.databinding.TeamFragmentBinding
 import com.fr.iut.pm.teammanager.databinding.TeamListFragmentBinding
 import com.fr.iut.pm.teammanager.model.Team
 import com.fr.iut.pm.teammanager.utils.TeamRecyclerViewAdapter
 import com.fr.iut.pm.teammanager.viewmodel.TeamListViewModel
-import kotlinx.android.synthetic.main.team_list_fragment.*
-import kotlinx.android.synthetic.main.team_list_fragment.view.*
 import java.lang.RuntimeException
 
 class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {

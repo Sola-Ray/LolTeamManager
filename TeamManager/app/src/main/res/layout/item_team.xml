@@ -52,7 +52,8 @@
                 android:contentDescription="@string/image_of_toplaner"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_team_name"
-                android:paddingBottom="@dimen/padding_bottom_img"/>
+                android:paddingBottom="@dimen/padding_bottom_img"
+                app:imageUrl='@{"https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/" + team.toplaner.profileIconId + ".png"}'/>
 
             <TextView
                 android:id="@+id/view_user_top"
@@ -86,7 +87,8 @@
                 android:contentDescription="@string/image_of_jgler"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_user_top"
-                android:paddingBottom="@dimen/padding_bottom_img"/>
+                android:paddingBottom="@dimen/padding_bottom_img"
+                app:imageUrl='@{"https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/" + team.jungler.profileIconId + ".png"}'/>
             <TextView
                 android:id="@+id/view_user_jgl"
                 android:layout_width="wrap_content"
@@ -119,7 +121,8 @@
                 android:contentDescription="@string/image_of_mid"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_user_jgl"
-                android:paddingBottom="@dimen/padding_bottom_img"/>
+                android:paddingBottom="@dimen/padding_bottom_img"
+                app:imageUrl='@{"https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/" + team.midlaner.profileIconId + ".png"}'/>
             <TextView
                 android:id="@+id/view_user_mid"
                 android:layout_width="wrap_content"
@@ -150,7 +153,8 @@
                 android:contentDescription="@string/image_of_adc"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_user_mid"
-                android:paddingBottom="@dimen/padding_bottom_img"/>
+                android:paddingBottom="@dimen/padding_bottom_img"
+                app:imageUrl='@{"https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/" + team.botlaner.profileIconId + ".png"}'/>
             <TextView
                 android:id="@+id/view_user_adc"
                 android:layout_width="wrap_content"
@@ -181,7 +185,8 @@
                 android:contentDescription="@string/image_of_sup"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_user_adc"
-                android:paddingBottom="@dimen/padding_bottom_img"/>
+                android:paddingBottom="@dimen/padding_bottom_img"
+                app:imageUrl='@{"https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/" + team.support.profileIconId + ".png"}'/>
             <TextView
                 android:id="@+id/view_user_bot"
                 android:layout_width="wrap_content"

@@ -8,11 +8,11 @@ const val NEW_TEAM_ID = 0L
 @Entity(tableName = "teams")
 data class Team(
     var name: String = "",
-    var toplaner: User? = null,
-    var jungler: User? = null,
-    var midlaner: User? = null,
-    var botlaner: User? = null,
-    var support: User? = null,
+    var toplaner: User? = User("", 0, "", ""),
+    var jungler: User? = User("", 0, "", ""),
+    var midlaner: User? = User("", 0, "", ""),
+    var botlaner: User? = User("", 0, "", ""),
+    var support: User? = User("", 0, "", ""),
     @PrimaryKey(autoGenerate = true) val id: Long = NEW_TEAM_ID) {
     override fun toString(): String {
         return "$id : $name : $toplaner : $jungler : $midlaner : $botlaner : $support"

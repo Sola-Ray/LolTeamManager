@@ -19,12 +19,16 @@ import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
 import com.fr.iut.pm.teammanager.model.User
 import com.fr.iut.pm.teammanager.utils.viewModelFactory
 import com.fr.iut.pm.teammanager.viewmodel.TeamViewModel
-import kotlinx.android.synthetic.main.item_team.*
-import kotlinx.android.synthetic.main.item_team.view.*
-import kotlinx.android.synthetic.main.team_fragment.*
-import kotlinx.android.synthetic.main.team_fragment.view.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.android.awaitFrame
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
-class TeamFragment : Fragment(), OnDataLoaded {
+class TeamFragment : Fragment() { //OnDataLoaded
 
     companion object {
         private const val MY_TEAM_ID = "my_team_id"
@@ -62,7 +66,6 @@ class TeamFragment : Fragment(), OnDataLoaded {
         val teamBinding = TeamFragmentBinding.inflate(inflater)
         teamBinding.teamVM = teamVM
         teamBinding.lifecycleOwner = viewLifecycleOwner
-
         return teamBinding.root
     }
 
@@ -116,22 +119,26 @@ class TeamFragment : Fragment(), OnDataLoaded {
     }
 
     private fun saveTeam() {
+        val loadData = Thread {
+            val networkFragment = NetworkFragment()
+            teamVM.team.value?.toplaner = networkFragment.getUserFromStringAndApi(teamVM.team.value?.toplaner?.username)
+            teamVM.team.value?.jungler = networkFragment.getUserFromStringAndApi(teamVM.team.value?.jungler?.username)
+            teamVM.team.value?.midlaner = networkFragment.getUserFromStringAndApi(teamVM.team.value?.midlaner?.username)
+            teamVM.team.value?.botlaner = networkFragment.getUserFromStringAndApi(teamVM.team.value?.botlaner?.username)
+            teamVM.team.value?.support = networkFragment.getUserFromStringAndApi(teamVM.team.value?.support?.username)
+        }
+
+        loadData.start()
+        loadData.join()
+
         if (teamVM.saveTeam() == false) {
-            /*AlertDialog.Builder(requireContext())
-                .setTitle(R.string.create_dog_error_dialog_title)
-                .setMessage(R.string.create_dog_error_message)
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.team_error_title)
+                .setMessage(R.string.team_error_message)
                 .setNeutralButton(android.R.string.ok, null)
-                .show()*/
+                .show()
             return
         }
-        /*val networkFragment = NetworkFragment()
-
-        networkFragment.setUserFromStringAndApi(edit_support.text.toString(), this)
-        team.botlaner = networkFragment.getUserApiFromString(edit_adc.toString(), img_user_adc, this)
-        team.midlaner = networkFragment.getUserApiFromString(edit_midlaner.toString(), img_user_mid)
-        team.toplaner = networkFragment.getUserApiFromString(edit_toplaner.toString(), img_user_top)
-        team.jungler = networkFragment.getUserApiFromString(edit_jgler.toString(), img_user_jgl)*/
-
         listener?.onTeamSaved()
     }
 
@@ -141,11 +148,25 @@ class TeamFragment : Fragment(), OnDataLoaded {
         listener?.onTeamDeleted()
     }
 
-    override fun onSucess(value: User?) {
-        Log.d("test", "onSucess: $value")
+    /*override fun onSuccess(value: User?) {
+        Log.d("test", "onSuccess: $value")
+        if(teamVM.team.value?.toplaner?.username.equals(value?.username)) {
+            teamVM.team.value?.toplaner = value
+        }
+        if(teamVM.team.value?.jungler?.username.equals(value?.username)) {
+            teamVM.team.value?.jungler = value
+        }
+        if(teamVM.team.value?.midlaner?.username.equals(value?.username)) {
+            teamVM.team.value?.midlaner = value
+        }
+        if(teamVM.team.value?.botlaner?.username.equals(value?.username)) {
+            teamVM.team.value?.botlaner = value
+        }
+        if(teamVM.team.value?.support?.username.equals(value?.username)) {
+            teamVM.team.value?.support = value
+        }
     }
 
     override fun onFailure() {
-        TODO("Not yet implemented")
-    }
+    }*/
 }

@@ -1,6 +1,6 @@
 package com.fr.iut.pm.teammanager.converter
 
-import androidx.databinding.ObservableField
+import android.util.Log
 import androidx.room.TypeConverter
 import com.fr.iut.pm.teammanager.model.User
 

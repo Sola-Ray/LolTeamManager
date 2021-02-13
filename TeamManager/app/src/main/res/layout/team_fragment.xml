@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <import type="com.fr.iut.pm.teammanager.utils.Converters"/>
         <variable
             name="teamVM"
             type="com.fr.iut.pm.teammanager.viewmodel.TeamViewModel" />
@@ -63,7 +62,6 @@
             android:hint="@string/toplaner"
             android:text="@={teamVM.team.toplaner.username}"
             android:layout_height="wrap_content" />
-<!--        android:text="@={Converters.userToString(teamVM.team.toplaner).split(&quot;,&quot;)[0]}"-->
 
         <TextView
             android:id="@+id/text_midlaner"
@@ -81,7 +79,7 @@
             app:layout_constraintStart_toEndOf="@id/barrier"
             android:importantForAutofill="no"
             android:hint="@string/midlaner"
-            android:text="@{teamVM.team.midlaner.username}"
+            android:text="@={teamVM.team.midlaner.username}"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -100,7 +98,7 @@
             app:layout_constraintStart_toEndOf="@id/barrier"
             android:importantForAutofill="no"
             android:hint="@string/adc"
-            android:text="@{teamVM.team.botlaner.username}"
+            android:text="@={teamVM.team.botlaner.username}"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -119,7 +117,7 @@
             app:layout_constraintStart_toEndOf="@id/barrier"
             android:importantForAutofill="no"
             android:hint="@string/support"
-            android:text="@{teamVM.team.support.username}"
+            android:text="@={teamVM.team.support.username}"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -138,7 +136,7 @@
             app:layout_constraintStart_toEndOf="@id/barrier"
             android:importantForAutofill="no"
             android:hint="@string/jungler"
-            android:text="@{teamVM.team.jungler.username}"
+            android:text="@={teamVM.team.jungler.username}"
             android:layout_height="wrap_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

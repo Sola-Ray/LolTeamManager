@@ -10,17 +10,4 @@ object Converters {
     fun listEmptyToVisibility(empty: Boolean): Int {
         return if (empty) View.VISIBLE else View.GONE
     }
-
-    @JvmStatic
-    fun userToString(value: User?): String {
-        val converter = UserToStringConverter()
-        return converter.fromUser(value)
-    }
-
-    @JvmStatic
-    @InverseMethod("userToString")
-    fun stringToUser(value: String): User {
-        val converter = UserToStringConverter()
-        return converter.toUser(value)
-    }
 }
