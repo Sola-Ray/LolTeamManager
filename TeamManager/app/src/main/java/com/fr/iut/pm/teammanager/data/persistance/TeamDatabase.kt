@@ -31,13 +31,12 @@ abstract class TeamDatabase : RoomDatabase() {
                 if (instance == null)
                     synchronized(this) {
                         if (instance == null) {
-                            instance = Room.inMemoryDatabaseBuilder(
+                            instance = Room.databaseBuilder(
                                 application.applicationContext,
-                                TeamDatabase::class.java)
+                                TeamDatabase::class.java,"team.db")
                                 .allowMainThreadQueries()
                                 .build()
                         }
-                        //dirtyPopulateDB()
                     }
                 return instance!!
             } else
@@ -52,15 +51,5 @@ abstract class TeamDatabase : RoomDatabase() {
 
             application = app
         }
-
-        /*private fun dirtyPopulateDB() {
-            getInstance().teamDAO().apply {
-                insert(Team ("Abusing Mid Gap", User("Minyan Chan", 0, "0", "0"),
-                    User("Silvesster", 0, "0", "0"),
-                    User("Soła", 0, "0", "0"),
-                    User("Rayon Alcool", 0, "0", "0"),
-                    User("Timoη", 0, "0", "0")))
-            }
-        }*/
     }
 }

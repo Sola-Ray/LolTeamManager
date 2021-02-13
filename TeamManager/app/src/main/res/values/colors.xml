@@ -8,4 +8,8 @@
     <color name="superGrey">#868b9f</color>
     <color name="superBrown">#3c282b</color>
     <color name="superWhite">#d2d0df</color>
+    <color name="win">#8BC34A</color>
+    <color name="lose">#F44336</color>
+    <color name="win_row_bg">#ff546150</color>
+    <color name="lose_row_bg">#ff614e4f</color>
 </resources>

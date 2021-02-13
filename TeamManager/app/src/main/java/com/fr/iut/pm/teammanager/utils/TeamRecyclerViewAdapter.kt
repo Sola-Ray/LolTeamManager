@@ -31,13 +31,6 @@ class TeamRecyclerViewAdapter(private val listener: Callbacks) :
         fun bind(team: Team) {
             binding.team = team
             binding.executePendingBindings()
-
-            /*val networkFragment = NetworkFragment()
-            networkFragment.getUserApiFromString(team.botlaner?.username, itemView.img_user_adc)
-            networkFragment.getUserApiFromString(team.toplaner?.username, itemView.img_user_top)
-            networkFragment.getUserApiFromString(team.jungler?.username, itemView.img_user_jgl)
-            networkFragment.getUserApiFromString(team.midlaner?.username, itemView.img_user_mid)
-            networkFragment.getUserApiFromString(team.support?.username, itemView.img_user_sup)*/
         }
     }
 

@@ -4,10 +4,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "champion")
-class Champion (@PrimaryKey val id: Int,
-                val name: String,
-                val imageLink: String?){
+class Champion(
+    @PrimaryKey val id: Int,
+    val imageLink: String?) : Comparable<Champion>{
     override fun toString(): String {
-        return "$id : $name : ($imageLink)"
+        return "$id : ($imageLink)"
+    }
+
+    override fun compareTo(other: Champion): Int {
+        return imageLink!!.compareTo(other.imageLink!!)
     }
 }
