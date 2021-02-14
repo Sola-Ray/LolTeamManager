@@ -18,7 +18,7 @@ class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {
 
     private val teamListAdapter = TeamRecyclerViewAdapter(this)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val viewBinding = TeamListFragmentBinding.inflate(inflater)
         viewBinding.teamListVM = teamListVM
         viewBinding.lifecycleOwner = viewLifecycleOwner

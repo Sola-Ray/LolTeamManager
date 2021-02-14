@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.fr.iut.pm.teammanager.R
@@ -12,8 +13,7 @@ import com.fr.iut.pm.teammanager.fragment.MatchListFragment
 import com.fr.iut.pm.teammanager.fragment.TeamFragment
 import com.fr.iut.pm.teammanager.fragment.TeamListFragment
 import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
-
-private const val match_list_fragment = "matchListFragment"
+import com.fr.iut.pm.teammanager.model.User
 
 class TeamListActivity : AppCompatActivity(),
     TeamListFragment.OnInteractionListener, TeamFragment.OnInteractionListener {
@@ -48,6 +48,9 @@ class TeamListActivity : AppCompatActivity(),
         finish()
     }
 
+    /**
+     * Créé le channel permettant d'afficher les notifications
+     */
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.channel_name)
@@ -63,7 +66,11 @@ class TeamListActivity : AppCompatActivity(),
         }
     }
 
+    /**
+     * Affiche l'historique des derniers matchs d'un joueur
+     * Cette fonctionnalité est à venir (bientôt terminée)
+     */
     fun openMatchHistory(view:View) {
-        startActivity(MatchListActivity.getIntent(this))
+        //startActivity(MatchListActivity.getIntent(this, view.resources.getResourceName(view.id), 1))
     }
 }

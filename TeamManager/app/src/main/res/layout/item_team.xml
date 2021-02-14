@@ -78,7 +78,8 @@
                 android:layout_margin="@dimen/view_user_margin"
                 app:layout_constraintBaseline_toBaselineOf="@+id/view_user_top"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrier"/>
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                android:onClick="openMatchHistory"/>
 
             <ImageView
                 android:id="@+id/img_user_jgl"
@@ -112,7 +113,8 @@
                 android:layout_margin="@dimen/view_user_margin"
                 app:layout_constraintBaseline_toBaselineOf="@+id/view_user_jgl"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrier"/>
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                android:onClick="openMatchHistory"/>
 
             <ImageView
                 android:id="@+id/img_user_mid"
@@ -177,7 +179,8 @@
                 android:text="@string/info"
                 app:layout_constraintBaseline_toBaselineOf="@+id/view_user_adc"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrier"/>
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                android:onClick="openMatchHistory"/>
 
             <ImageView
                 android:id="@+id/img_user_sup"
@@ -209,7 +212,8 @@
                 android:text="@string/info"
                 app:layout_constraintBaseline_toBaselineOf="@+id/view_user_bot"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrier"/>
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                android:onClick="openMatchHistory"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

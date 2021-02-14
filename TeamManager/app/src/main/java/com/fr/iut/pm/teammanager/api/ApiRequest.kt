@@ -1,4 +1,5 @@
 package com.fr.iut.pm.teammanager.api
+import com.fr.iut.pm.teammanager.model.MatchEntity
 import com.fr.iut.pm.teammanager.model.User
 import retrofit2.Call
 import retrofit2.http.GET
@@ -11,5 +12,5 @@ interface ApiRequest {
     fun getUser(@Path("user") user: String?, @Query("api_key") key: String): Call<User>
 
     @GET("lol/match/v4/matchlists/by-account/{accountId}")
-    fun getHistory(@Path("accountId") accountId: String?, @Query("api_key") key: String): Call<User>
+    fun getHistory(@Path("accountId") accountId: String?, @Query("api_key") key: String): Call<List<MatchEntity>>
 }

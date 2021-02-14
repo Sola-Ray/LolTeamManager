@@ -1,6 +1,5 @@
 package com.fr.iut.pm.teammanager.converter
 
-import android.util.Log
 import androidx.room.TypeConverter
 import com.fr.iut.pm.teammanager.model.User
 
