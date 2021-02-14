@@ -144,7 +144,8 @@
                 android:text="@string/info"
                 app:layout_constraintBaseline_toBaselineOf="@+id/view_user_mid"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrier"/>
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                android:onClick="openMatchHistory"/>
 
             <ImageView
                 android:id="@+id/img_user_adc"

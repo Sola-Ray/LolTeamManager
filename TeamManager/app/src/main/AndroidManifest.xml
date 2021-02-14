@@ -23,5 +23,8 @@
         <activity
             android:name=".activity.TeamActivity"
             android:parentActivityName=".activity.TeamListActivity" />
+        <activity
+            android:name=".activity.MatchListActivity"
+            android:parentActivityName=".activity.TeamListActivity" />
     </application>
 </manifest>

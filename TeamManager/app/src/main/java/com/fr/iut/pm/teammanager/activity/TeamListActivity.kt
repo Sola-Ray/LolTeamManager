@@ -5,20 +5,21 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.fr.iut.pm.teammanager.R
+import com.fr.iut.pm.teammanager.fragment.MatchListFragment
 import com.fr.iut.pm.teammanager.fragment.TeamFragment
 import com.fr.iut.pm.teammanager.fragment.TeamListFragment
 import com.fr.iut.pm.teammanager.model.NEW_TEAM_ID
+
+private const val match_list_fragment = "matchListFragment"
 
 class TeamListActivity : AppCompatActivity(),
     TeamListFragment.OnInteractionListener, TeamFragment.OnInteractionListener {
 
     companion object {
         fun createFragment() = TeamListFragment()
-        const val TEAM_LIST_FRAGMENT = "TeamListFragment"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +27,6 @@ class TeamListActivity : AppCompatActivity(),
         setContentView(R.layout.main_activity)
 
         createNotificationChannel()
-
-        val teamBtn = findViewById<Button>(R.id.btn_teams)
-
-        teamBtn.setOnClickListener{
-            teamButtonClicked()
-        }
 
         if(supportFragmentManager.findFragmentById(R.id.container) == null) {
             supportFragmentManager.beginTransaction()
@@ -45,14 +40,6 @@ class TeamListActivity : AppCompatActivity(),
     }
 
     override fun onAddNewTeam() = startActivity(TeamActivity.getIntent(this, NEW_TEAM_ID))
-
-    private fun teamButtonClicked(){
-        if(supportFragmentManager.findFragmentByTag(TEAM_LIST_FRAGMENT) == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, createFragment())
-                .commitNow()
-        }
-    }
 
     override fun onTeamSaved() {
     }
@@ -76,4 +63,7 @@ class TeamListActivity : AppCompatActivity(),
         }
     }
 
+    fun openMatchHistory(view:View) {
+        startActivity(MatchListActivity.getIntent(this))
+    }
 }
