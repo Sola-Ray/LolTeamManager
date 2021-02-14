@@ -7,10 +7,8 @@ import com.fr.iut.pm.teammanager.data.persistance.TeamRepository
 import com.fr.iut.pm.teammanager.model.Team
 import kotlinx.coroutines.launch
 
-class TeamListViewModel  : ViewModel() {
+class TeamListViewModel : ViewModel() {
     private val teamRepo = TeamRepository(TeamDatabase.getInstance().teamDAO())
 
     val teamList = teamRepo.getAll()
-
-    fun deleteTeam(team: Team) = viewModelScope.launch { teamRepo.delete(team) }
 }
