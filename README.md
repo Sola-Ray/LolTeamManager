@@ -15,4 +15,4 @@ Si vous souhaitez tester l'application vous pouvez réaliser ces opérations :
 - Si vous fermez l'application et que vous la réouvrez, vous retrouverez toutes vos données précédemment enregistrées !
 - Pour l'instant le bouton "Infos" n'exécute pas d'action, mais à terme l'historique du joueur sera disponible (cette fonctionnalité était presque terminée le 14/02/2021)
 
-**Attention !!! Pour utiliser l'application, il vous faut une API Key que je peux vous envoyer par mail, une fois que vous en aurez fait la demande et que vous l'aurez reçu, il faudra aller dans la classe NetworkFragment (package fragment) et remplacer l'ancienne API_KEY par celle reçue.**
+**Attention !!! Pour utiliser l'application, il vous faut une API Key que je peux vous envoyer par mail, une fois que vous en aurez fait la demande et que vous l'aurez reçu, il faudra aller dans la classe NetworkFragment (package fragment) et remplacer l'ancienne API_KEY par celle reçue (valable 24H).**
