@@ -34,7 +34,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-class TeamFragment : Fragment() { //OnDataLoaded
+class TeamFragment : Fragment() {
 
     companion object {
         private const val MY_TEAM_ID = "my_team_id"
@@ -124,6 +124,11 @@ class TeamFragment : Fragment() { //OnDataLoaded
         }
     }
 
+    /**
+     * Affiche une notification pendant le chargement des utilisateurs depuis la base
+     * Affiche une erreur si le nom d'une équipe est vide
+     * Sauvegarde l'équipe
+     */
     private fun saveTeam() {
         val notifLoading = 1
 
@@ -168,26 +173,4 @@ class TeamFragment : Fragment() { //OnDataLoaded
         teamVM.deleteTeam()
         listener?.onTeamDeleted()
     }
-
-    /*override fun onSuccess(value: User?) {
-        Log.d("test", "onSuccess: $value")
-        if(teamVM.team.value?.toplaner?.username.equals(value?.username)) {
-            teamVM.team.value?.toplaner = value
-        }
-        if(teamVM.team.value?.jungler?.username.equals(value?.username)) {
-            teamVM.team.value?.jungler = value
-        }
-        if(teamVM.team.value?.midlaner?.username.equals(value?.username)) {
-            teamVM.team.value?.midlaner = value
-        }
-        if(teamVM.team.value?.botlaner?.username.equals(value?.username)) {
-            teamVM.team.value?.botlaner = value
-        }
-        if(teamVM.team.value?.support?.username.equals(value?.username)) {
-            teamVM.team.value?.support = value
-        }
-    }
-
-    override fun onFailure() {
-    }*/
 }

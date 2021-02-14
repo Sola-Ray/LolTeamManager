@@ -63,8 +63,4 @@ class TeamListFragment : Fragment(), TeamRecyclerViewAdapter.Callbacks {
         listener = null
     }
 
-    private fun removeTeam(team: Team) {
-        teamListVM.deleteTeam(team)
-    }
-
 }

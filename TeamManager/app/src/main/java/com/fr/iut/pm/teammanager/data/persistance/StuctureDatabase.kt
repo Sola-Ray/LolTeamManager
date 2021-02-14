@@ -28,7 +28,6 @@ abstract class StuctureDatabase : RoomDatabase() {
                                 StuctureDatabase::class.java)
                                 .allowMainThreadQueries()
                                 .build()
-                        dirtyPopulateDB()
                     }
                 return instance!!
             } else
@@ -42,12 +41,6 @@ abstract class StuctureDatabase : RoomDatabase() {
                 throw RuntimeException("the database must not be initialized twice")
 
                 application = app
-        }
-
-        private fun dirtyPopulateDB() {
-            getInstance().structDAO().apply {
-                insert(Structure("Test"))
-            }
         }
     }
 }

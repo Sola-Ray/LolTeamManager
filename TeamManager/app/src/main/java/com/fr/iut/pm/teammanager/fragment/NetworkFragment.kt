@@ -18,28 +18,9 @@ class NetworkFragment {
         private const val URL = "https://euw1.api.riotgames.com"
     }
 
-    /*fun getUserFromStringAndApi(name: String?, onDataLoaded: OnDataLoaded) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(URL)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(ApiRequest::class.java)
-        val teamRequest = service.getUser(name, API_KEY)
-
-        teamRequest.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                val user = response.body()
-                onDataLoaded.onSuccess(user)
-            }
-
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.e("API", "Error : $t")
-                onDataLoaded.onFailure()
-            }
-        })
-    }*/
-
+    /**
+     * Requête permettant de récupérer un User de l'API depuis un String donné
+     */
     fun getUserFromStringAndApi(name: String?): User {
         val retrofit = Retrofit.Builder()
             .baseUrl(URL)
@@ -52,6 +33,9 @@ class NetworkFragment {
         return teamRequest.execute().body() ?: User("No User Found", 0, "", "")
     }
 
+    /**
+     * Récupère la liste des matchs depuis l'API à l'aide de l'ID du compte
+     */
     fun getUserHistory(accountId: String?) {
         val retrofit = Retrofit.Builder()
             .baseUrl(URL)

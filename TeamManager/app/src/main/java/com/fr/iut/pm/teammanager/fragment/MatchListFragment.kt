@@ -51,6 +51,11 @@ class MatchListFragment : Fragment() {
         return view
     }
 
+    /**
+     * Récupère un User d'une équipe en fonction de l'id de la ressource
+     * et de l'id de la team passé en paramètres
+     * (si la ressource contient mid, retourne le midlaner de l'équipe)
+     */
     private fun getUserFromIdRes(teamId: Long, idRes: String) : User? {
         val teamRepo = TeamRepository(TeamDatabase.getInstance().teamDAO())
         val team = teamRepo.findById(teamId)

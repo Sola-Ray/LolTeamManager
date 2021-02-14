@@ -35,6 +35,12 @@ class TeamActivity : AppCompatActivity(), TeamFragment.OnInteractionListener {
             onBackPressed()
         }
 
+        val homeBtn = findViewById<Button>(R.id.btn_home)
+
+        homeBtn.setOnClickListener{
+            onBackPressed()
+        }
+
         if(supportFragmentManager.findFragmentById(R.id.container) == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, createFragment())
